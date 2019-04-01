@@ -25,5 +25,20 @@ public static int difmenu(){
 }
 return num;
 }
+public static void rules(){
+    print(slopjock()+"is a game of reflexes.");
+    print("The goal of the game is to bankrupt the other");
+    print("player of their cards.");
+    print("Players will alternate putting down cards from their pile");
+}
+public static String vowel(){
+    ArrayList<String> vowels=new ArrayList<String>();
+    vowels.add("a"); vowels.add("e"); vowels.add("i"); 
+    vowels.add("o"); vowels.add("u"); vowels.add("y");
+    return vowels.get(new Random().nextInt(6));
+}
+public static String slopjock(){
+    return "Sl"+vowel()+"pj"+vowel()+"ck";
+}
 public static void print(String s){System.out.println(s);}
 }
