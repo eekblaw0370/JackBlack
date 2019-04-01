@@ -1,12 +1,10 @@
 ------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all he/she needs to know. The comments should usually include at least:
+Come play with us! We have many card games for you to share with all your friend!
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PROJECT TITLE: The Card Shark Gang
+PURPOSE OF PROJECT: Train future card sharks
+VERSION or DATE: 2019 A.D.
+HOW TO START THIS PROJECT: Write code!
+AUTHORS: Evan Ekblaw, Toby Franklin, Joseph Adcock, Aidan Li
+USER INSTRUCTIONS: Use
