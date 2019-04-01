@@ -1,4 +1,4 @@
-import java.io.*;
+System.out.printlnimport java.io.*;
 import java.util.Scanner;
 
 public class BlackoutTester
