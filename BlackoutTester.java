@@ -1,6 +1,7 @@
 System.out.printlnimport java.io.*;
 import java.util.Scanner;
-
+import java.util.ArrayList;
+import java.util.Collections;
 public class BlackoutTester
 {
     Blackout test = new Blackout();
