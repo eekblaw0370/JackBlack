@@ -13,7 +13,7 @@ public class BuildCard
     }
     
     //displays the card's rank as a string
-    public String displayRank(Card crd)
+    public static String displayRank(Card crd)
     {
         if (crd.getRank() == 1)
             return "A";
@@ -30,22 +30,22 @@ public class BuildCard
     }
     
     //displays the card's suit as a string
-    public String displaySuit(Card crd)
+    public static String displaySuit(Card crd)
     {
-        if (crd.getSuit().equals(1))
+        if (crd.getSuit().equals(Suit.club))
             return "♣";
-        else if (crd.getSuit().equals(2))
+        else if (crd.getSuit().equals(Suit.diamond))
             return "♦";
-        else if (crd.getSuit().equals(3))
+        else if (crd.getSuit().equals(Suit.heart))
             return "♥";
         else
             return "♠";
     }
     
     //displays an entire card
-    public String printCard(Card crd)
+    public static String printCard(Card crd)
     {
-        String str = "┌───┐ \n │" +  displaySuit(crd) + "   " + displaySuit(crd) + "| \n │  " + displayRank(crd) + "  │ \n │" + displaySuit(crd) + "    " + displaySuit(crd) + "| \n └───┘";
+        String str = "┌───┐ \n│" +  displaySuit(crd) + "   " + displaySuit(crd) + "| \n│  " + displayRank(crd) + "  │ \n│" + displaySuit(crd) + "   " + displaySuit(crd) + "| \n└───┘\n";
         return str;
     }
 }
