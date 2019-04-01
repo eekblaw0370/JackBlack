@@ -1,19 +1,19 @@
 
 /**
- * Write a description of class Eucher here.
+ * Write a description of class slapJack here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Eucher
+public class slapJack
 {
     // instance variables - replace the example below with your own
     private int x;
 
     /**
-     * Constructor for objects of class Eucher
+     * Constructor for objects of class slapJack
      */
-    public Eucher()
+    public slapJack()
     {
         // initialise instance variables
         x = 0;
