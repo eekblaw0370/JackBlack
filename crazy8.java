@@ -39,5 +39,7 @@ public class crazy8
         }
         return num;
     }
+    
+    
 }
  
