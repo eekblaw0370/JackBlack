@@ -7,7 +7,7 @@
  * 1.1 - 4/1/2018
  *
  * Major Rules
- * Aces are wild (instead of 8s).
+ * 8 is the wild card
  * Playing a 2 forces the next player to play a 2 or, if unable, to draw two cards from stock and miss a turn. 
  * If that player draws, the next player may proceed in the usual way; but, if a 2 is played, the next player must do 
  * likewise or draw four cards and miss a turn. Each successive 2 so played adds two to the number that must be drawn 
@@ -20,22 +20,21 @@ import java.util.Random;
 import java.util.*;
 
 public class crazy8 
-{      public static void play(){
-        Deck deck1 =new Deck();
+{   public static void play(){
+        Deck Stock =new Deck();
         ArrayList<Card> human=new ArrayList<Card>();
         ArrayList<Card> computer=new ArrayList<Card>();
         menu1();
+        System.out.println(Stock);
     }
 
     public static int menu1(){
         int num=-1;
-        while(num<0 || num>2){
-            System.out.println("Choose a computer difficulty.");
-            System.out.println("0 - Little Sis You probably don't even have to try.");
-            System.out.println("1 - Best Friend. He knows the game, so go try to take him down.");
-            System.out.println("2 - Jack, the world Crazy Eight Cup Champion. You will probably lose.");
+        while(num<0 || num>0){
+            System.out.println("Here is your oppnent ");
+            System.out.println("0 - Jack, the world Crazy Eight Cup Champion. You will probably lose. Type 0 to challenge this master.");
             Scanner get=new Scanner(System.in);
-            num=get.nextInt(); if(num<0 || num>2){System.out.println("No! Not an option!");}
+            num=get.nextInt(); if(num<0 || num>0){System.out.println("No! Not an option!");}
         }
         return num;
     }

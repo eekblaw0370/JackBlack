@@ -1,15 +1,24 @@
 
 /**
- * Can you beat extreme level???
+ * Can you beat Jack???
  * Created by Aidan Li
  */
 import java.util.*;
 public class slapJack
 {public static void play(){
-    Deck dock=new Deck();
+    Deck dock=new Deck(); 
+    for(int i=0;i<7;i++){dock.shuffle();} //for very thorough shuffling
     ArrayList<Card> human=new ArrayList<Card>();
     ArrayList<Card> computer=new ArrayList<Card>();
+    int c=0;
+    while(!dock.isEmpty()){if(c%2==0){human.add(dock.deal());}
+    else{computer.add(dock.deal());}c++;}
     difmenu();
+}
+public static int openmenu(){
+    print("Choose:");
+    print("1 - Play game");
+    print("2 - See rules");
 }
 public static int difmenu(){
     int num=-1;
@@ -19,17 +28,25 @@ public static int difmenu(){
     print("1 - 6 year old. He just learned the game, so go easy on him.");
     print("2 - 16 year old. He's played the game a few times.");
     print("3 - 40 year old. A veteran of the game.");
-    print("4 - Jack, the world slapjack champion. You will lose.");
+    print("4 - Jack the Jock, the world slapjack champion. You will lose.");
     Scanner get=new Scanner(System.in);
     num=get.nextInt(); if(num<0 || num>4){print("No! Not an option!");}
-}
+}   
 return num;
 }
 public static void rules(){
     print(slopjock()+"is a game of reflexes.");
-    print("The goal of the game is to bankrupt the other");
-    print("player of their cards.");
+    printc("The goal of the game is to bankrupt the other");
+    printc("player of their cards.");
     print("Players will alternate putting down cards from their pile");
+    printc("When a suitable sequence of cards is put down, slap that pile!");
+    print("But if you slap incorrectly, you must give the other player 3 cards.");
+    print("Here are some acceptable sequences:");
+    print("Single Jack. It's called SlapJack, after all.");
+    print("Double number. If 2 of the same number in a row are put down, slap!");
+    print("Sandwich. If 2 of a number have another card in between, it's still valid.");
+    print("Count. Every turn the number will go up. If it matches what's put down, slap!");
+    print("Press enter to play the game.");
 }
 public static String vowel(){
     ArrayList<String> vowels=new ArrayList<String>();
@@ -41,4 +58,5 @@ public static String slopjock(){
     return "Sl"+vowel()+"pj"+vowel()+"ck";
 }
 public static void print(String s){System.out.println(s);}
+public static void printc(String s){System.out.print(s);}
 }
