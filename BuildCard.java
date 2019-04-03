@@ -43,10 +43,9 @@ public class BuildCard
     }
     
     //displays an entire card
-    public static String printCard(Card crd)
+    public static void printCard(Card crd)
     {
-        String str = "┌───┐ \n│" +  displaySuit(crd) + "   " + displaySuit(crd) + "| \n│  " + displayRank(crd) + "  │ \n│" + displaySuit(crd) + "   " + displaySuit(crd) + "| \n└───┘\n";
-        return str;
+        System.out.printf("%s%n%s%n%s%n%s%n%s%n", "┌───┐", "│♠   ♠|", "│  A  │", "│♠   ♠|", "└───┘");
     }
 }
 

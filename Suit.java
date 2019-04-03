@@ -6,6 +6,7 @@ public class Suit implements Comparable{
    static public final Suit heart   = new Suit(3, "hearts");   
    static public final Suit diamond = new Suit(2, "diamonds");   
    static public final Suit club    = new Suit(1, "clubs");
+   static public final Suit empty   = new Suit(0, "empty");
    
    private int order;
    private String name;
