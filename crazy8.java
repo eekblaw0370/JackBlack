@@ -21,10 +21,11 @@ import java.util.*;
 
 public class crazy8 
 {   public static void play(){
-        Deck deck1 =new Deck();
+        Deck Stock =new Deck();
         ArrayList<Card> human=new ArrayList<Card>();
         ArrayList<Card> computer=new ArrayList<Card>();
         menu1();
+        System.out.println(Stock);
     }
 
     public static int menu1(){
@@ -37,6 +38,7 @@ public class crazy8
         }
         return num;
     }
-
+    
+    
 }
  
