@@ -6,6 +6,7 @@
 import java.util.*;
 public class slapJack
 {public static void play(){
+    
     Deck dock=new Deck(); 
     for(int i=0;i<7;i++){dock.shuffle();} //for very thorough shuffling
     ArrayList<Card> human=new ArrayList<Card>();
@@ -21,7 +22,7 @@ public static int openmenu(){
     print("2 - See rules");
 }
 public static int difmenu(){
-    int num=-1;
+    int num=-1, speed=0;
     while(num<0 || num>4){
     print("Choose a computer difficulty.");
     print("0 - baby. You probably don't even have to try.");
@@ -32,7 +33,15 @@ public static int difmenu(){
     Scanner get=new Scanner(System.in);
     num=get.nextInt(); if(num<0 || num>4){print("No! Not an option!");}
 }   
-return num;
+switch(num){
+    case 0: speed=-1;   break;
+    case 1: speed=1;    break;
+    case 2: speed=3;    break;
+    case 3: speed=5;    break;
+    case 4: speed=1000; break;
+    default: speed=1;
+}
+return speed;
 }
 public static void rules(){
     print(slopjock()+"is a game of reflexes.");
