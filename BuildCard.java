@@ -38,14 +38,16 @@ public class BuildCard
             return "♦";
         else if (crd.getSuit().equals(Suit.heart))
             return "♥";
-        else
+        else if (crd.getSuit().equals(Suit.spade))
             return "♠";
+        else
+            return "█";
     }
     
     //displays an entire card
     public static void printCard(Card crd)
     {
-        System.out.printf("%s%n%s%n%s%n%s%n%s%n", "┌───┐", "│♠   ♠|", "│  A  │", "│♠   ♠|", "└───┘");
+        System.out.printf("%s%n%s%n%s%n%s%n%s%n", "┌───┐", "│" + displaySuit(crd) + "   " + displaySuit(crd) + "|", "│  " + displayRank(crd) + "  │", "│" + displaySuit(crd) + "   " + displaySuit(crd) + "|", "└───┘");
     }
 }
 
