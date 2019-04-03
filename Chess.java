@@ -4,5 +4,9 @@
 
 public class Chess
 {
-    //hi
+    public static void main(String [] args)
+    {
+        ChessBoard board = new ChessBoard();
+        ChessBoard.printBoard(board);
+    }
 } 

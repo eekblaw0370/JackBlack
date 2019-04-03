@@ -4,7 +4,7 @@
 
 public class ChessBoard
 {
-    private Card[][] board = new Card[8][8];
+    private static Card[][] board = new Card[8][8];
     public ChessBoard()
     {
         this.board[0][0] = new Card(Suit.club, 5);
@@ -15,15 +15,15 @@ public class ChessBoard
         this.board[0][5] = new Card(Suit.club, 2);
         this.board[0][6] = new Card(Suit.club, 4);
         this.board[0][7] = new Card(Suit.club, 6);
-        for (int i = 1; i <= 8; i++){
+        for (int i = 0; i <= 7; i++){
             this.board[1][i] = new Card(Suit.spade, i);
         }
         for (int j = 2; j <= 5; j++){
-            for (int i = 1; i <= 8; i++){
+            for (int i = 0; i <= 7; i++){
                 this.board[j][i] = new Card(Suit.empty, 0);
             }
         }
-        for (int i = 1; i <= 8; i++){
+        for (int i = 0; i <= 7; i++){
             this.board[6][i] = new Card(Suit.diamond, i);
         }
         this.board[7][0] = new Card(Suit.heart, 5);
@@ -36,7 +36,7 @@ public class ChessBoard
         this.board[7][7] = new Card(Suit.heart, 6);
     }
     
-    public void printBoard(ChessBoard chessboard)
+    public static void printBoard(ChessBoard chessboard)
     {
         for (int a = 0; a <= 7; a++){
             System.out.println("┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐");
