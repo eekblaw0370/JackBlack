@@ -1,4 +1,3 @@
-
 /**
  * Can you beat Jack???
  * Created by Aidan Li
@@ -6,6 +5,7 @@
 import java.util.*;
 public class slapJack{
     public static void play(){
+    System.out.println();
     Deck dock=new Deck(); Scanner seer=new Scanner(System.in); String turn="h";
     for(int i=0;i<7;i++){dock.shuffle();} //for very thorough shuffling. 
     ArrayList<Card> human=      new ArrayList<Card>();
@@ -29,9 +29,14 @@ public static int openmenu(){
     print("Choose:");
     print("1 - Play game");
     print("2 - See rules");
+    return 2;
 }
-public static boolean stackisvalid(){
-    
+public static boolean slapisvalid(ArrayList<Card> stack){
+    int top=stack.size()-1;
+    if(stack.get(top).getRank()==11){return true;}
+    if(stack.get(top).getRank()==stack.get(top-1).getRank()){return true;}
+    if(stack.get(top).getRank()==stack.get(top-2).getRank()){return true;}
+    return false;
 }
 public static int difmenu(){
     int num=-1, speed=0;
@@ -41,7 +46,7 @@ public static int difmenu(){
     print("1 - 6 year old. He just learned the game, so go easy on him.");
     print("2 - 16 year old. He's played the game a few times.");
     print("3 - 40 year old. A veteran of the game.");
-    print("4 - Jack the Jock, the world slapjack champion. You will lose.");
+    print("4 - Jack the Jock, the world "+slopjock()+" champion. You will lose.");
     Scanner get=new Scanner(System.in);
     num=get.nextInt(); if(num<0 || num>4){print("No! Not an option!");}
 }   
@@ -63,7 +68,7 @@ public static void rules(){
     printc("When a suitable sequence of cards is put down, slap that pile!");
     print("But if you slap incorrectly, you must give the other player 3 cards.");
     print("Here are some acceptable sequences:");
-    print("Single Jack. It's called SlapJack, after all.");
+    print("Single Jack. It's called "+slopjock()+", after all.");
     print("Double number. If 2 of the same number in a row are put down, slap!");
     print("Sandwich. If 2 of a number have another card in between, it's still valid.");
     print("Count. Every turn the number will go up. If it matches what's put down, slap!");
