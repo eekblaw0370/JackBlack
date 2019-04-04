@@ -20,10 +20,15 @@ public class slapJack{
     if(seer.nextLine().equals("h")){print("Nope, it's tails.");}
     else{print("Nope it was heads.");}
     turn="c";
-    
     c=0;
     difmenu();
-    
+    while(human.size()!=0 && computer.size()!=0){
+        if(turn.equals("c")){
+        }
+        if(turn.equals("h")){
+        }
+        if(turn.equals("c")){turn="h";}else{turn="c";}
+    }
 }
 public static int openmenu(){
     print("Choose:");
@@ -31,11 +36,14 @@ public static int openmenu(){
     print("2 - See rules");
     return 2;
 }
-public static boolean slapisvalid(ArrayList<Card> stack){
+public static boolean slapisvalid(ArrayList<Card> stack, int count){
     int top=stack.size()-1;
     if(stack.get(top).getRank()==11){return true;}
     if(stack.get(top).getRank()==stack.get(top-1).getRank()){return true;}
     if(stack.get(top).getRank()==stack.get(top-2).getRank()){return true;}
+    if(stack.get(top).getRank()==count){return true;}
+    if(stack.size()<3){}
+    if(stack.size()<2){}
     return false;
 }
 public static int difmenu(){
