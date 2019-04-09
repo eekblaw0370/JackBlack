@@ -4,9 +4,8 @@
 
 public class Chess
 {
-    public static void main(String [] args)
+    public void move(String pos1, String pos2)
     {
-        ChessBoard board = new ChessBoard();
-        ChessBoard.printBoard(board);
+        
     }
 } 

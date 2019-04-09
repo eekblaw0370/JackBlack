@@ -33,21 +33,21 @@ public class BuildCard
     public static String displaySuit(Card crd)
     {
         if (crd.getSuit().equals(Suit.club))
-            return "♣";
+            return "S";
         else if (crd.getSuit().equals(Suit.diamond))
-            return "♦";
+            return "D";
         else if (crd.getSuit().equals(Suit.heart))
-            return "♥";
+            return "H";
         else if (crd.getSuit().equals(Suit.spade))
-            return "♠";
+            return "C";
         else
-            return "█";
+            return "N";
     }
     
     //displays an entire card
     public static void printCard(Card crd)
     {
-        System.out.printf("%s%n%s%n%s%n%s%n%s%n", "┌───┐", "│" + displaySuit(crd) + "   " + displaySuit(crd) + "|", "│  " + displayRank(crd) + "  │", "│" + displaySuit(crd) + "   " + displaySuit(crd) + "|", "└───┘");
+        System.out.printf("%s%n%s%n%s%n%s%n%s%n", "┌───┐", "│" + displaySuit(crd) + "   " + displaySuit(crd) + "│", "│  " + displayRank(crd) + "  │", "│" + displaySuit(crd) + "   " + displaySuit(crd) + "│", "└───┘");
     }
 }
 
