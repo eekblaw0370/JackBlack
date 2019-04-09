@@ -23,7 +23,10 @@ import java.util.Random;
 import java.util.*;
 
 public class crazy8{ 
-    public static void play(){
+    private int rank;
+    
+    
+    public static void StartGame(){
         Deck Stock =new Deck();
         ArrayList<Card> human=new ArrayList<Card>();
         ArrayList<Card> computer=new ArrayList<Card>();
@@ -61,5 +64,35 @@ public class crazy8{
         }
         return num;
     }
-
+    
+    public String rankToString(){
+      if (rank == 1)
+         return "Ace";
+      else if (rank == 2)
+         return "Two";
+      else if (rank == 3)
+         return "Three";
+      else if (rank == 4)
+         return "Four";
+      else if (rank == 5)
+         return "Five";
+      else if (rank == 6)
+         return "Six";
+      else if (rank == 7)
+         return "Seven";
+      else if (rank == 8)
+         return "Eight";
+      else if (rank == 9)
+         return "Nine";
+      else if (rank == 10)
+         return "Ten";
+      else if (rank == 11)
+         return "Jack";
+      else if (rank == 12)
+         return "Queen";
+      else if (rank == 13)
+         return "King";
+      else
+         return "" + rank;
+   }
 }
