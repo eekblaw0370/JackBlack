@@ -43,7 +43,7 @@ public class ChessBoard
             System.out.println(" ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐");
             System.out.print(" ");
             for (int b = 0; b <= 7; b++){
-                System.out.print("│" + BuildCard.displaySuit(board[a][b]) + "   " + BuildCard.displaySuit(board[a][b]) + "|");
+                System.out.print("│" + BuildCard.displaySuit(board[a][b]) + "   " + BuildCard.displaySuit(board[a][b]) + "│");
             }
             System.out.println();
             System.out.print((a + 1));
@@ -54,7 +54,7 @@ public class ChessBoard
             System.out.println();
             System.out.print(" ");
             for (int d = 0; d <= 7; d++){
-                System.out.print("│" + BuildCard.displaySuit(board[a][d]) + "   " + BuildCard.displaySuit(board[a][d]) + "|");
+                System.out.print("│" + BuildCard.displaySuit(board[a][d]) + "   " + BuildCard.displaySuit(board[a][d]) + "│");
             }
             System.out.println();
             System.out.println(" └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘");

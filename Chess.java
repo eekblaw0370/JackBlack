@@ -6,6 +6,6 @@ public class Chess
 {
     public void move(String pos1, String pos2)
     {
-        
+        //hi
     }
 } 
