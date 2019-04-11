@@ -16,7 +16,7 @@ public class ChessBoard
         this.board[0][6] = new Card(Suit.club, 4);
         this.board[0][7] = new Card(Suit.club, 6);
         for (int i = 0; i <= 7; i++){
-            this.board[1][i] = new Card(Suit.spade, i);
+            this.board[1][i] = new Card(Suit.spade, i + 1);
         }
         for (int j = 2; j <= 5; j++){
             for (int i = 0; i <= 7; i++){
@@ -38,22 +38,28 @@ public class ChessBoard
     
     public static void printBoard(ChessBoard chessboard)
     {
+        System.out.println("    a       b       c        d       e       f        g       h");
         for (int a = 0; a <= 7; a++){
-            System.out.println("┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐");
+            System.out.println(" ┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐┌───┐");
+            System.out.print(" ");
             for (int b = 0; b <= 7; b++){
-                System.out.print("│" + BuildCard.displaySuit(board[a][b]) + "   " + BuildCard.displaySuit(board[a][b]) + "|");
+                System.out.print("│" + BuildCard.displaySuit(board[a][b]) + "   " + BuildCard.displaySuit(board[a][b]) + "│");
             }
             System.out.println();
+            System.out.print((a + 1));
             for (int c = 0; c <= 7; c++){
                 System.out.print("│  " + BuildCard.displayRank(board[a][c]) + "  │");
             }
+            System.out.print((a + 1));
             System.out.println();
+            System.out.print(" ");
             for (int d = 0; d <= 7; d++){
-                System.out.print("│" + BuildCard.displaySuit(board[a][d]) + "   " + BuildCard.displaySuit(board[a][d]) + "|");
+                System.out.print("│" + BuildCard.displaySuit(board[a][d]) + "   " + BuildCard.displaySuit(board[a][d]) + "│");
             }
             System.out.println();
-            System.out.println("└───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘");
+            System.out.println(" └───┘└───┘└───┘└───┘└───┘└───┘└───┘└───┘");
         }
+        System.out.println("    a       b       c        d       e       f        g       h");
     }
 } 
 
