@@ -12,6 +12,8 @@ public class Blackout
     ArrayList<Card> bot1 = new ArrayList<Card>();
     ArrayList<Card> bot2 = new ArrayList<Card>();
     ArrayList<Card> bot3 = new ArrayList<Card>();
+    ArrayList<Card> cards = new ArrayList<Card>();
+    
     Random rand = new Random(); 
     Scanner reader = new Scanner(System.in); 
     public Blackout(){
@@ -28,21 +30,15 @@ public class Blackout
     System.out.println("            YOU             ");
     
     
-    
-    
-    
+    for (int i = 1; i <= 13; i++)
+         cards.add(new Card(spade, i));
     
     }
     public void Deal(int numcards){
-    Stock.addSuit(Suit.spade);
-    Stock.addSuit(Suit.heart);
-    Stock.addSuit(Suit.diamond);
-    Stock.addSuit(Suit.club);
+    
     for(int i=numcards;i>0;i--){
-    player.add(cards.remove(rand.nextInt(51+1- (10-i)*4))); 
-    bot1.add(cards.remove(rand.nextInt(50+1- (10-i)*4)));
-    bot2.add(cards.remove(rand.nextInt(49+1- (10-i)*4)));
-    bot3.add(cards.remove(rand.nextInt(48+1- (10-i)*4)));
+    Stock.deal(i);
+    
     }
     }
     
