@@ -11,7 +11,7 @@ public class Suit implements Comparable{
    private int order;
    private String name;
 
-   private Suit(int ord, String nm){
+   public Suit(int ord, String nm){
       name = nm;
       order = ord;
    }
