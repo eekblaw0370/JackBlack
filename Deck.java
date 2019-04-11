@@ -20,7 +20,7 @@ public class Deck{
       addSuit(Suit.club);
    }
 
-   private void addSuit(Suit suit){
+   public void addSuit(Suit suit){
       for (int i = 1; i <= 13; i++)
          cards.add(new Card(suit, i));
    }

@@ -4,29 +4,48 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 public class Blackout
 {
+      Deck Stock =new Deck();
+    ArrayList<Card> player = new ArrayList<Card>();
+    ArrayList<Card> bot1 = new ArrayList<Card>();
+    ArrayList<Card> bot2 = new ArrayList<Card>();
+    ArrayList<Card> bot3 = new ArrayList<Card>();
+    Random rand = new Random(); 
+    Scanner reader = new Scanner(System.in); 
     public Blackout(){
-    String[] test = new String[52]("1♥","2♥","3♥","4♥","5♥","6♥","7♥","8♥","9♥","10♥","Jack♥","Queen♥","King♥","1♦","2♦","3♦","4♦","5♦","6♦","7♦","8♦","9♦","10♦","Jack♦","Queen♦","King♦","1♣","2♣","3♣","4♣","5♣","6♣","7♣","8♣","9♣","10♣","Jack♣","Queen♣","King♣","1♠","2♠","3♠","4♠","5♠","6♠","7♠","8♠","9♠","10♠","Jack♠","Queen♠","King♠");
-    int[] deck = new int[52];
-    String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
-    String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
-
-    // Initialize cards
-    for (int i = 0; i < deck.length; i++) {
-      deck[i] = i;
-    }
-
-    // Shuffle the cards
-    for (int i = 0; i < deck.length; i++) {
-      int index = (int)(Math.random() * deck.length);
-      int temp = deck[i];
-      deck[i] = deck[index];
-      deck[index] = temp;
-    }
-
+        
+    System.out.println("1.Play");
+    System.out.println("2.Rules");
+    if (reader.nextInt()== 2) Rules();
+    
+    System.out.println("The seating arrangment is:");
+    System.out.println("            Bot2            ");
+    System.out.println("                            ");
+    System.out.println("Bot1                    Bot3");
+    System.out.println("                            ");
+    System.out.println("            YOU             ");
+    
+    
+    
+    
+    
     
     }
+    public void Deal(int numcards){
+    Stock.addSuit(Suit.spade);
+    Stock.addSuit(Suit.heart);
+    Stock.addSuit(Suit.diamond);
+    Stock.addSuit(Suit.club);
+    for(int i=numcards;i>0;i--){
+    player.add(cards.remove(rand.nextInt(51+1- (10-i)*4))); 
+    bot1.add(cards.remove(rand.nextInt(50+1- (10-i)*4)));
+    bot2.add(cards.remove(rand.nextInt(49+1- (10-i)*4)));
+    bot3.add(cards.remove(rand.nextInt(48+1- (10-i)*4)));
+    }
+    }
+    
     public static void Rules()
     {
         System.out.println("In blackout, the dealer deals out 10 cards to each of the (4) players");
@@ -37,6 +56,7 @@ public class Blackout
         System.out.println("only if you got the number you declared. Once you play all 10 rounds, you add"); 
         System.out.println("up the scores and play again with 9 cards and 9 rounds. then 8 cards and 8 rounds");
         System.out.println("until you play with 1 card and 1 round. Then the player with the highest score wins");
+        System.out.println("                                                                              ");
         System.out.println("ROUNDS:");
         System.out.println("Rounds will start with the winner of the last round (or left of the dealer if"); 
         System.out.println("the begging of a game). The first player can play any card. Then each other player");
