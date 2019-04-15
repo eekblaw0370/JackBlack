@@ -4,6 +4,11 @@
 
 public class Chess
 {
+    public static boolean checkMove(String po1, String pos2)
+    {
+        return true;
+    }
+    
     public static void move(String pos1, String pos2, ChessBoard brd)
     {
         Card[][] board = ChessBoard.getBoard(brd);
