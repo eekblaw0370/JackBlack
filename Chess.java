@@ -1,19 +1,14 @@
 //Joe Adcock
 //Period 3
-//Creating a game of chess using cards
+//Chess-related methods
 
 public class Chess
 {
     public static void move(String pos1, String pos2, ChessBoard brd)
     {
-        //System.out.println(pos1);
-        //System.out.println(pos2);
         Card[][] board = ChessBoard.getBoard(brd);
         Card temp = new Card((ChessBoard.getCard(board, getY(pos1), getX(pos1))).getSuit(), (ChessBoard.getCard(board, getY(pos1), getX(pos1))).getRank());
-        //System.out.println(getX(pos1));
-        //System.out.println(getY(pos1));
-        //System.out.println(temp);
-
+ 
         board[getY(pos1)][getX(pos1)] = board[getY(pos2)][getX(pos2)];
         board[getY(pos2)][getX(pos2)] = temp;
         System.out.println(board[getY(pos2)][getX(pos2)]);
