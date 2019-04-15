@@ -8,7 +8,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
-public class playCrazy8
+public class PlayCrazy8
 {
    public static void main (String[] args){
    
