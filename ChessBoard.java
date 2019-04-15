@@ -24,7 +24,7 @@ public class ChessBoard
             }
         }
         for (int i = 0; i <= 7; i++){
-            this.board[6][i] = new Card(Suit.diamond, i);
+            this.board[6][i] = new Card(Suit.diamond, i + 1);
         }
         this.board[7][0] = new Card(Suit.heart, 5);
         this.board[7][1] = new Card(Suit.heart, 3);
@@ -34,6 +34,16 @@ public class ChessBoard
         this.board[7][5] = new Card(Suit.heart, 2);
         this.board[7][6] = new Card(Suit.heart, 4);
         this.board[7][7] = new Card(Suit.heart, 6);
+    }
+    
+    public static Card[][] getBoard(ChessBoard chessboard)
+    {
+        return chessboard.board;
+    }
+    
+    public static Card getCard(Card[][] brd, int posX, int posY)
+    {
+        return brd[posX][posY];
     }
     
     public static void printBoard(ChessBoard chessboard)
