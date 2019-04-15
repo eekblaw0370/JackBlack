@@ -28,16 +28,18 @@ public class crazy8{
     
     public static void StartGame(){
         Deck Stock =new Deck();
-        
         rules();
         menu();
-        
         Stock.shuffle();
         while (!Stock.isEmpty()){
             Card card = Stock.deal();
-            System.out.println(card);
+            //System.out.println(card); Used to get the shuffled deck
         }
-        
+        crazy8 craz = new crazy8();
+        ArrayList<String> Decks = new ArrayList<String>();
+        Decks = craz.getDeck();
+        List Deck1 = Decks.subList(0,5);
+        System.out.println("Here is your deck of five cards good sir : \n" + Deck1);
         ArrayList<Card> fiveCard=new ArrayList<Card>();
         
     }

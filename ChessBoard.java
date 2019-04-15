@@ -1,6 +1,6 @@
 //Joe Adcock
 //Period 3
-//Handling the board for a chess game
+//Interacting with the chessboard
 
 public class ChessBoard
 {
