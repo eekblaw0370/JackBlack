@@ -28,17 +28,29 @@ public class crazy8{
     
     public static void StartGame(){
         Deck Stock =new Deck();
-        ArrayList<Card> human=new ArrayList<Card>();
-        ArrayList<Card> computer=new ArrayList<Card>();
+        
         rules();
         menu();
+        
         Stock.shuffle();
         while (!Stock.isEmpty()){
             Card card = Stock.deal();
             System.out.println(card);
         }
+        
+        ArrayList<Card> fiveCard=new ArrayList<Card>();
+        
     }
-
+    public  ArrayList getDeck(){
+        Deck Stock =new Deck();
+        Stock.shuffle();
+        Card[] card = Stock.deal(52);
+        ArrayList <Card> newDeck = new ArrayList<Card>(Arrays.asList(card));
+        return newDeck;
+        
+        
+        
+    }
     public static void rules(){
         System.out.println("Major Rules:");
         System.out.println("1. You will start with 5 cards in your hand play them all and you win!!");
@@ -54,6 +66,7 @@ public class crazy8{
 
     public static int menu(){
         int num=-1;
+        
         while(num<0 || num>0){
             System.out.println("-------------------------------------");
             System.out.println("");
@@ -62,9 +75,12 @@ public class crazy8{
             Scanner get=new Scanner(System.in);
             num=get.nextInt(); if(num<0 || num>0){System.out.println("No! Not an option!");}
         }
+        
         return num;
+        
+         
     }
-    
+   
     public String rankToString(){
       if (rank == 1)
          return "Ace";
@@ -94,5 +110,6 @@ public class crazy8{
          return "King";
       else
          return "" + rank;
-   }
+    }
+    
 }
