@@ -62,4 +62,26 @@ public class goofspiel{
         else if(hscore>cscore){System.out.println("Human wins!");}
         else{System.out.println("Computer wins!");}
     }
+    public static void printvs(String human, String computer){
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+        print("                                                             ");
+    }
+    public static void print(String s){System.out.println(s);}
 }
