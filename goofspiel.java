@@ -15,16 +15,16 @@ public class goofspiel{
         Random randy=new Random();
         String hsuit="", csuit="";
         while(hsuit!="diamonds" && hsuit!="hearts" && hsuit!="clubs" && hsuit!="spades"){
-        System.out.println("Choose your suit. (d/h/c/s)");
-        hsuit=choicer.nextLine();
-        switch(hsuit){
-            case "d": hsuit=suits.remove(0); break;
-            case "h": hsuit=suits.remove(1); break;
-            case "c": hsuit=suits.remove(2); break;
-            case "s": hsuit=suits.remove(3); break;
-            default: System.out.println("Nein! Dost thou not know the meaning of words?"); break;
-        }
-    } 
+            System.out.println("Choose your suit. (d/h/c/s)");
+            hsuit=choicer.nextLine();
+            switch(hsuit){
+                case "d": hsuit=suits.remove(0); break;
+                case "h": hsuit=suits.remove(1); break;
+                case "c": hsuit=suits.remove(2); break;
+                case "s": hsuit=suits.remove(3); break;
+                default: System.out.println("Nein! Dost thou not know the meaning of words?"); break;
+            }
+        } 
         csuit=suits.get(randy.nextInt(2));
         System.out.println("You are "+hsuit+". Computer is "+csuit+".");
         int h=0,c=1, pval=0;

@@ -9,12 +9,16 @@ public class PlayChess
     private static ChessBoard chessboard = new ChessBoard();
     private static int gameMode;
     private static int turn = 1;
+    private static boolean done = false;
     public static void main(String [] args)
     {
         printRules();
         determineGameMode();
         ChessBoard.printBoard(chessboard);
-        askMove();
+        while (done == false){
+            askMove();
+        }
+        congratulate();
     }
     
     public static void printRules()
@@ -40,10 +44,22 @@ public class PlayChess
     public static void askMove()
     {
         Scanner reader = new Scanner(System.in);
-        System.out.println("Enter your move: ");
-        String move = reader.nextLine();
-        String start = move.substring(0, move.indexOf(" "));
-        String end = move.substring(move.indexOf(" ") + 1);
-        Chess.move(start, end, chessboard);
+        boolean moved = false;
+        while (moved == false){
+            System.out.println("Enter your move: ");
+            String move = reader.nextLine();
+            String start = move.substring(0, move.indexOf(" "));
+            String end = move.substring(move.indexOf(" ") + 1);
+            if (Chess.checkMove(start, end) == true){
+                Chess.move(start, end, chessboard);
+                moved = true;
+            }else
+                System.out.println("Invalid move.");
+        }
+    }
+    
+    public static void congratulate()
+    {
+        
     }
 }
