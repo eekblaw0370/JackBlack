@@ -4,8 +4,44 @@
 
 public class Chess
 {
-    public static boolean checkMove(String po1, String pos2)
+    public static boolean checkMove(String pos1, String pos2, ChessBoard brd, int turn)
     {
+        Card[][] board = ChessBoard.getBoard(brd);
+        Card card1 = new Card((ChessBoard.getCard(board, getY(pos1), getX(pos1))).getSuit(), (ChessBoard.getCard(board, getY(pos1), getX(pos1))).getRank());
+        Card card2 = new Card((ChessBoard.getCard(board, getY(pos2), getX(pos2))).getSuit(), (ChessBoard.getCard(board, getY(pos2), getX(pos2))).getRank());
+        if (card1.isRed() == card2.isRed())
+            return false;
+        if (card1.getSuit().equals(Suit.diamond)){
+            if (turn == 2)
+                return false;
+            else{
+                if (getY(pos1) == 7 && (getY(pos2) == 5 || getY(pos2) == 6) && (getX(pos1) == getX(pos2)))
+                    return true;
+                else if (getY(pos2) == getY(pos1) - 1 && (getX(pos2) == getX(pos1) + 1 || getX(pos2) == getX(pos1) - 1) && card2.getSuit().equals(Suit.spade) || card2.getSuit().equals(Suit.club))
+                    return true;
+                else
+                    return false;
+            }
+        }else if (card1.getSuit().equals(Suit.heart)){
+            if (turn == 2)
+                return false;
+            else{
+  
+            }
+        }else if (card1.getSuit().equals(Suit.club)){
+            if (turn == 1)
+                return false;
+            else{
+                
+            }
+        }else if (card1.getSuit().equals(Suit.spade)){
+            if (turn == 1)
+                return false;
+            else{
+                
+            }
+        }
+            
         return true;
     }
     
