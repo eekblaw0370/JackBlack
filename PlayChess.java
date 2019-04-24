@@ -50,16 +50,23 @@ public class PlayChess
             String move = reader.nextLine();
             String start = move.substring(0, move.indexOf(" "));
             String end = move.substring(move.indexOf(" ") + 1);
-            if (Chess.checkMove(start, end) == true){
+            if (Chess.checkMove(start, end, chessboard, turn) == true){
                 Chess.move(start, end, chessboard);
                 moved = true;
             }else
                 System.out.println("Invalid move.");
         }
+        if (turn == 1)
+            turn = 2;
+        else
+            turn = 1;
     }
     
     public static void congratulate()
     {
-        
+        if (turn == 1)
+            System.out.println("Player 1 wins!");
+        else
+            System.out.println("Player 2 wins!");
     }
 }
