@@ -18,40 +18,35 @@
  * requires a 4 to be played or four cards to be drawn (up to a maximum of 16 cards). Playing a jack reverses the direction 
  * of play and forces the preceding player to play a jack too, reversing play again, or else that player misses a turn.
  */
-
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.*;
 
 public class crazy8{ 
     private int rank;
-    
-    
+
     public static void StartGame(){
-        Deck Stock =new Deck();
         rules();
         menu();
-        Stock.shuffle();
-        while (!Stock.isEmpty()){
-            Card card = Stock.deal();
-            //System.out.println(card); Used to get the shuffled deck
-        }
+        
         crazy8 craz = new crazy8();
         ArrayList<String> Decks = new ArrayList<String>();
         Decks = craz.getDeck();
         List Deck1 = Decks.subList(0,5);
-        System.out.println("Here is your deck of five cards good sir : \n" + Deck1);
-        ArrayList<Card> fiveCard=new ArrayList<Card>();
+        List Deck2 = Decks.subList(6,11);
         
+        //Decks.removeRange(0,12);
+        System.out.println("Here is your deck of five cards Player 1 : \n" + Deck1);
+        System.out.println("Here is your deck of five cards Player 2 : \n" + Deck2);
     }
+
     public  ArrayList getDeck(){
         Deck Stock =new Deck();
         Stock.shuffle();
         Card[] card = Stock.deal(52);
         ArrayList <Card> newDeck = new ArrayList<Card>(Arrays.asList(card));
         return newDeck;
-        
-        
-        
+
     }
     public static void rules(){
         System.out.println("Major Rules:");
@@ -66,50 +61,49 @@ public class crazy8{
 
     public static int menu(){
         int num=-1;
-        
+
         while(num<0 || num>0){
             System.out.println("-------------------------------------");
             System.out.println("");
-            System.out.println("Here is your oppnent ");
-            System.out.println("0 - Jack, the world Crazy Eight Cup Champion. You will lose. Type 0 to challenge this master.");
+            System.out.println("Here is your oppnent another classmate.");
+            System.out.println("Either one could lose. Type 0 to challenge the other master.");
             Scanner get=new Scanner(System.in);
             num=get.nextInt(); if(num<0 || num>0){System.out.println("No! Not an option!");}
         }
-        
+
         return num;
-        
-         
+
     }
-   
+
     public String rankToString(){
-      if (rank == 1)
-         return "Ace";
-      else if (rank == 2)
-         return "Two";
-      else if (rank == 3)
-         return "Three";
-      else if (rank == 4)
-         return "Four";
-      else if (rank == 5)
-         return "Five";
-      else if (rank == 6)
-         return "Six";
-      else if (rank == 7)
-         return "Seven";
-      else if (rank == 8)
-         return "Eight";
-      else if (rank == 9)
-         return "Nine";
-      else if (rank == 10)
-         return "Ten";
-      else if (rank == 11)
-         return "Jack";
-      else if (rank == 12)
-         return "Queen";
-      else if (rank == 13)
-         return "King";
-      else
-         return "" + rank;
+        if (rank == 1)
+            return "Ace";
+        else if (rank == 2)
+            return "Two";
+        else if (rank == 3)
+            return "Three";
+        else if (rank == 4)
+            return "Four";
+        else if (rank == 5)
+            return "Five";
+        else if (rank == 6)
+            return "Six";
+        else if (rank == 7)
+            return "Seven";
+        else if (rank == 8)
+            return "Eight";
+        else if (rank == 9)
+            return "Nine";
+        else if (rank == 10)
+            return "Ten";
+        else if (rank == 11)
+            return "Jack";
+        else if (rank == 12)
+            return "Queen";
+        else if (rank == 13)
+            return "King";
+        else
+            return "" + rank;
     }
-    
+
 }
