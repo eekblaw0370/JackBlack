@@ -13,7 +13,16 @@ public class goofspiel{
         ArrayList<Integer> thedeck=new ArrayList<Integer>();
         ArrayList<Integer> hhand=new ArrayList<Integer>();
         ArrayList<Integer> chand=new ArrayList<Integer>();
+        String um="";
         for(int i=1;i<=13;i++){thedeck.add(i); hhand.add(i); chand.add(i);}   //this be the stuff
+        System.out.println("Do you know how to play Goofspiel? (y/not y)");
+        um=choicer.nextLine();
+        if(um.substring(0,1).toLowerCase().equals("y")){
+            System.out.println("Let's just jump into it then.");
+        System.out.println();}
+        else{rules();System.out.println("Press enter to continue");choicer.nextLine();}
+        
+        System.out.println();
         Collections.shuffle(thedeck);             //Guess what this does
         boolean yessir=false;                     //I actually forgot what this does
         int choice=0, cbid=0, hbid=0;             //The bids
@@ -37,62 +46,74 @@ public class goofspiel{
         } 
         csuit=suits.remove(randy.nextInt(2));
         dsuit=suits.get(randy.nextInt(1));
-        printvs(hsuit,csuit);
+        bigwin.printvs(hsuit,csuit);
         for(int i=0;i<13;i++){
+            System.out.println("Round "+(i+1));
             prize=thedeck.remove(randy.nextInt(thedeck.size()));  //2 levels of random
             System.out.println("Current prize: "+prize+" of "+dsuit);
-            System.out.println("Here are your bid options: ");
-            for(int n:hhand){System.out.println(n+" ");}
+            System.out.print("Here are your bid options: ");
+            for(int n:hhand){System.out.print(n+" ");}
+            System.out.println();
             System.out.println("Choose a number to bid.");
             while(true){
             hbid=choicer.nextInt();
             if(hhand.contains(hbid))break;
-            else print("You fool! Choose again!");
+            else System.out.println("You fool! Choose again!");
            }
-           temp=randy.nextInt(2)+prize-1;
+           hhand.remove(hhand.indexOf(hbid));
+           temp=randy.nextInt(2)+prize-1;        //range of choices
            if(chand.contains(temp)){cbid=chand.remove(chand.indexOf(temp));}
-           else if(temp<prize){
-               while(true){
-                   
+           else if(temp<prize){  //wow this is harder than I thought it would be
+               for(int z=chand.size()-1;z>=0;z--){     //umm these do something probably
+                   if(chand.get(z)<temp){
+                       cbid=chand.remove(z); break;
+                    }
+                   if(z==0){
+                       cbid=chand.remove(z); break;
+                    }
                 }
            }
            else{
-               
+               for(int z=0;z<chand.size();z++){
+                   if(chand.get(z)>temp){
+                       cbid=chand.remove(z); break;
+                    }
+                   if(z==chand.size()-1){
+                       cbid=chand.remove(z); break;
+                    }
+                }
             }
            System.out.println("Computer's bid: "+cbid+" of "+csuit);
            if(hbid>cbid){
-               hscore+=prize+sparklebag; sparklebag=0;
+               hscore+=prize+sparklebag; 
+               System.out.println("You won the "+prize+" of "+dsuit+".");
+               if(sparklebag!=0){System.out.println("Bonus: "+sparklebag);}
+               sparklebag=0;
             }
            else if(cbid>hbid){
-               cscore+=prize+sparklebag; sparklebag=0;
+               cscore+=prize+sparklebag; 
+               System.out.println("Computer won the "+prize+" of "+dsuit+".");
+               if(sparklebag!=0){System.out.println("Bonus: "+sparklebag);}
+               sparklebag=0;
             }
            else{
                sparklebag+=prize;
                System.out.println("Tie bid. Bonus prize is now at "+sparklebag);
             }
-           
+           bigwin.print("Current scores:");
+           System.out.println("You:      "+hscore);
+           System.out.println("Computer: "+cscore);
+           System.out.println();
         }
         System.out.println();
-        if(hscore==cscore){System.out.println("Tie!");}
-        else if(hscore>cscore){System.out.println("Human wins!");}
-        else{System.out.println("Computer wins!");}
+        if(hscore==cscore){bigwin.tie();}
+        else if(hscore>cscore){bigwin.humanwin();}
+        else{bigwin.compwin();}
     }
-    public static void printvs(String human, String computer){
-        print("       _____             /                                         ");
-        print("     _/ _ _ \\_          /       ___________                       ");
-        print("    (o / | \\ o)        /       |.---------.|                      ");
-        print("     || o|o ||        /        ||         ||                       ");
-        print("     | \\_|_/ |       /         ||         ||                      ");
-        print("     |  ___  |      /_V_S__    ||         ||                       ");
-        print("     | (___) |            /    |'---------'|                       ");
-        print("     |\\_____/|           /      `)__ ____('                       ");
-        print("     | \\___/ |          /       [=== -- o ]--.                    ");
-        print("     \\       /         /      __'---------'__ \\                  ");
-        print("      \\__ __/         /      [::::::::::: :::] )                  ");
-        print("                     /        `\"\"'\"\"\"\"\"'\"\"\"\"`/T\\       ");  
-        print("                                             \\_/                  ");
-        print("   YOU(The Goof)           COMPUTER(The Spiel)                     ");
-        System.out.println("      "+human+"                    "+computer);
+    public static void rules(){
+        System.out.println("Goofspiel is simple. There will be a prize card in the middle. If you bid");
+        System.out.println("higher than the opponent, you get the prize number of points. If you tie");
+        System.out.println("bid, the prize will be added to the bonus area and whoever wins the next");
+        System.out.println("battle will win the prize plus the bonus. Good luck!");
     }
-    public static void print(String s){System.out.println(s);}
 }
