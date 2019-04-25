@@ -61,7 +61,7 @@ public class goofspiel{
             else System.out.println("You fool! Choose again!");
            }
            hhand.remove(hhand.indexOf(hbid));
-           temp=randy.nextInt(2)+prize-1;        //range of choices
+           temp=randy.nextInt(2)+prize+sparklebag-1;        //range of choices
            if(chand.contains(temp)){cbid=chand.remove(chand.indexOf(temp));}
            else if(temp<prize){  //wow this is harder than I thought it would be
                for(int z=chand.size()-1;z>=0;z--){     //umm these do something probably

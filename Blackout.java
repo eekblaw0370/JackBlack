@@ -30,8 +30,8 @@ public class Blackout
     System.out.println("            YOU             ");
     
     
-    for (int i = 1; i <= 13; i++)
-         cards.add(new Card(spade, i));
+    for (int i = 1; i <= 13; i++){}
+        // cards.add(new Card(spade, i));
     
     }
     public void Deal(int numcards){
