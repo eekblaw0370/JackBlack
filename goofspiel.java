@@ -12,8 +12,12 @@ public class goofspiel{
         suits.add("clubs"); suits.add("spades");
         boolean yessir=false;
         int choice=0, cbid=0, hbid=0;
-        Random randy=new Random();
+        Random randy=new Random();                //wow! look at all these handy variables!
         String hsuit="", csuit="";
+        int h=0,c=1, pval=0;
+        Card prize;
+        int hscore=0,cscore=0;
+        int[][] hands=new int[2][13];
         while(hsuit!="diamonds" && hsuit!="hearts" && hsuit!="clubs" && hsuit!="spades"){
             System.out.println("Choose your suit. (d/h/c/s)");
             hsuit=choicer.nextLine();
@@ -26,11 +30,7 @@ public class goofspiel{
             }
         } 
         csuit=suits.get(randy.nextInt(2));
-        System.out.println("You are "+hsuit+". Computer is "+csuit+".");
-        int h=0,c=1, pval=0;
-        Card prize;
-        int hscore=0,cscore=0;
-        int[][] hands=new int[2][13];
+        printvs(hsuit,csuit);
         for(int n=0;n<2;n++){
             for(int i=0;i<13;i++){
                 hands[n][i]=i+1;
@@ -63,25 +63,21 @@ public class goofspiel{
         else{System.out.println("Computer wins!");}
     }
     public static void printvs(String human, String computer){
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
-        print("                                                             ");
+        print("       _____             /                                               ");
+        print("     _/ _ _ \\_          /       ___________                              ");
+        print("    (o / | \\ o)        /       |.---------.|                             ");
+        print("     || o|o ||        /        ||         ||                              ");
+        print("     | \\_|_/ |       /         ||         ||                             ");
+        print("     |  ___  |      /_V_S__    ||         ||                              ");
+        print("     | (___) |            /    |'---------'|                              ");
+        print("     |\\_____/|           /      `)__ ____('                              ");
+        print("     | \\___/ |          /       [=== -- o ]--.                           ");
+        print("     \\       /         /      __'---------'__ \\                         ");
+        print("      \\__ __/         /      [::::::::::: :::] )                         ");
+        print("                     /        `\"\"'\"\"\"\"\"'\"\"\"\"`/T\\             ");  
+        print("                                             \\_/                        ");
+        print("   YOU(The Goof)           COMPUTER(The Spiel)                     ");
+        System.out.println("      "+human+"                    "+computer);
     }
     public static void print(String s){System.out.println(s);}
 }
