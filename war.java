@@ -37,7 +37,11 @@ public class war
             humbug=humdrum.remove(humdrum.size()-1);
             System.out.println("Human played "+humbug);
             if(humbug.getRank()>commull.getRank()){
-                System.out.println();
+                System.out.println("You won: ");
+                System.out.print(commull+" ");
+                for(int l=0;l<hold.size();l++){
+                    
+                }
             }
             else if(commull.getRank()>humbug.getRank()){
             }

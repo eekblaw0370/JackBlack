@@ -10,20 +10,18 @@ public class goofspiel{
         ArrayList<String> suits=new ArrayList<String>();
         suits.add("diamonds");suits.add("hearts"); //what fancy suits you have!
         suits.add("clubs"); suits.add("spades");   //The better to scam you with, my dear!
-        ArrayList<Integer> thedeck=new ArrayList<Integer>();
-        ArrayList<Integer> hhand=new ArrayList<Integer>();
-        ArrayList<Integer> chand=new ArrayList<Integer>();
+        Deck hhand=new Deck(true);   //boolean doesn't actually do anything
+        Deck thedeck=new Deck(false);
+        Deck chand=new Deck(true);
         String um="";
-        for(int i=1;i<=13;i++){thedeck.add(i); hhand.add(i); chand.add(i);}   //this be the stuff
         System.out.println("Do you know how to play Goofspiel? (y/not y)");
         um=choicer.nextLine();
         if(um.substring(0,1).toLowerCase().equals("y")){
             System.out.println("Let's just jump into it then.");
         System.out.println();}
         else{rules();System.out.println("Press enter to continue");choicer.nextLine();}
-        
         System.out.println();
-        Collections.shuffle(thedeck);             //Guess what this does
+        thedeck.shuffle();
         boolean yessir=false;                     //I actually forgot what this does
         int choice=0, cbid=0, hbid=0;             //The bids
         int temp=0;                               //It's okay, mom, it's temporary

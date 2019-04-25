@@ -11,6 +11,10 @@ public class Deck{
    public Deck(){
       reset();
    }
+   
+   public Deck(boolean isempty){
+       cards=new ArrayList<Card>();
+    }
 
    public void reset(){
       cards = new ArrayList<Card>();
