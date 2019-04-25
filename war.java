@@ -15,21 +15,35 @@ public class war
         else quick();
         }
     public static void real()throws Exception{
+        Card humbug; Card commull;
         int c=0;
         Deck duck=new Deck();
+        Scanner bloop=new Scanner(System.in);
         ArrayList<Card> humdrum=new ArrayList<Card>();
         ArrayList<Card> compstomp=new ArrayList<Card>();
+        ArrayList<Card> hold=new ArrayList<Card>();
         while(!duck.isEmpty()){
-            if(c%2==0){
-                humdrum.add(duck.deal());
-            }
-            else{
-                compstomp.add(duck.deal());
-            }
+            if(c%2==0)humdrum.add(duck.deal());
+            else compstomp.add(duck.deal());
             c++;
         }
+        c=0;
         System.out.print("Computer is dealing cards");dot();
-        
+        while(compstomp.size()>0 && humdrum.size()>0){
+            commull=compstomp.remove(humdrum.size()-1);
+            System.out.println("Computer played "+commull);
+            System.out.println("Press enter to play from your hand.");
+            bloop.nextLine();
+            humbug=humdrum.remove(humdrum.size()-1);
+            System.out.println("Human played "+humbug);
+            if(humbug.getRank()>commull.getRank()){
+                System.out.println();
+            }
+            else if(commull.getRank()>humbug.getRank()){
+            }
+            else{
+            }
+        }
     }
     public static void quick()throws Exception{
         Random randi=new Random();
