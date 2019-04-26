@@ -76,6 +76,21 @@ public class Deck{
       for (Card card : array)
          cards.add(card);
    }
+   
+   public void bettershuffle(){
+       int x=cards.size();
+      Random gen = new Random();
+      Card[] array = new Card[x];
+      while (cards.size() > 0){
+     Card card = cards.remove(cards.size() - 1);
+     int i = gen.nextInt(x);
+     while (array[i] != null)
+            i = gen.nextInt(x);
+     array[i] = card;
+      }
+      for (Card card : array)
+         cards.add(card);
+    }
 
    public String toString(){
     String result = "";

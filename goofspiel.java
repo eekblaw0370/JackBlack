@@ -44,7 +44,7 @@ public class goofspiel{
         } 
         chand=pile.remove(randy.nextInt(2));
         thedeck=pile.remove(randy.nextInt(1)); 
-        thedeck.shuffle();
+        thedeck.bettershuffle();
         Card cbidc, hbidc;
         bigwin.printvs(hhand.getcard(0).getSuit().toString(),chand.getcard(0).getSuit().toString());
         for(int i=0;i<13;i++){
