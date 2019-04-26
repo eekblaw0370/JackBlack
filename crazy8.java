@@ -34,10 +34,13 @@ public class crazy8{
         Decks = craz.getDeck();
         List Deck1 = Decks.subList(0,5);
         List Deck2 = Decks.subList(6,11);
-        
-        //Decks.removeRange(0,12);
         System.out.println("Here is your deck of five cards Player 1 : \n" + Deck1);
         System.out.println("Here is your deck of five cards Player 2 : \n" + Deck2);
+        for (int i=0; i>=11; i++){
+            Decks.remove(0);
+            
+        }
+        System.out.println(Decks);
     }
 
     public  ArrayList getDeck(){
@@ -74,7 +77,19 @@ public class crazy8{
         return num;
 
     }
-
+    
+    public static int cardChoiceP1(){
+     int num =-1;
+     while(num<0 || num >0){
+        System.out.println("Which card would you like to play Player 1?");
+        
+        
+        
+        }
+        
+        
+        return num;   
+    }
     public String rankToString(){
         if (rank == 1)
             return "Ace";
