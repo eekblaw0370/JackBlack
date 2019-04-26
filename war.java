@@ -17,37 +17,44 @@ public class war
     public static void real()throws Exception{
         Card humbug; Card commull;
         int c=0;
-        Deck duck=new Deck();
+        Deck duck=new Deck(), humdrum=new Deck(true), compstomp=new Deck(false), hold=new Deck(true);
         Scanner bloop=new Scanner(System.in);
-        ArrayList<Card> humdrum=new ArrayList<Card>();
-        ArrayList<Card> compstomp=new ArrayList<Card>();
-        ArrayList<Card> hold=new ArrayList<Card>();
         while(!duck.isEmpty()){
-            if(c%2==0)humdrum.add(duck.deal());
-            else compstomp.add(duck.deal());
+            if(c%2==0)humdrum.addcard(duck.deal());
+            else compstomp.addcard(duck.deal());
             c++;
         }
+        humdrum.bettershuffle();
+        compstomp.bettershuffle();
         c=0;
         System.out.print("Computer is dealing cards");dot();
         while(compstomp.size()>0 && humdrum.size()>0){
-            commull=compstomp.remove(humdrum.size()-1);
+            if(hold.size()>0)System.out.println("Hold contains: "+hold);
+            commull=compstomp.deal();
             System.out.println("Computer played "+commull);
             System.out.println("Press enter to play from your hand.");
             bloop.nextLine();
-            humbug=humdrum.remove(humdrum.size()-1);
-            System.out.println("Human played "+humbug);
+            humbug=humdrum.deal();
+            System.out.println("You played "+humbug);
             if(humbug.getRank()>commull.getRank()){
-                System.out.println("You won: ");
-                System.out.print(commull+" ");
-                for(int l=0;l<hold.size();l++){
-                    
-                }
+                System.out.println("You won the battle.");
+                humdrum.addcard(humbug);
+                humdrum.addcard(commull);
+                hold.clear();
             }
             else if(commull.getRank()>humbug.getRank()){
+                System.out.println("Computer won the battle.");
+                compstomp.addcard(humbug);
+                compstomp.addcard(commull);
+                hold.clear();
             }
             else{
+                System.out.println("The battle came to a stalemate. Both cards have gone into the hold.");
+                hold.addcard(humbug); hold.addcard(commull);
             }
         }
+        if(humdrum.size()>0)System.out.println("Human won.");
+        if(compstomp.size()>0)System.out.println("Computer won.");
     }
     public static void quick()throws Exception{
         Random randi=new Random();

@@ -28,7 +28,11 @@ public class Deck{
       addSuit(Suit.heart);
       addSuit(Suit.diamond);
       addSuit(Suit.club);
-   }
+      }
+      
+   public void clear(){
+       cards=new ArrayList<Card>();
+    }
    
    public void addSuit(Suit suit){
       for (int i = 1; i <= 13; i++)
@@ -100,6 +104,8 @@ public class Deck{
    }
    
    //Methods I added becuz u can't just use arraylist methods
+   public void addcard(Card datcard){cards.add(datcard);}
+   
    public boolean contains(int ranque){
        for(Card card:cards){if(card.getRank()==ranque)return true;}
        return false;
