@@ -17,7 +17,7 @@ public class Gameroom{
             case 3: PlayChess.main(yo); break;
             case 4: slapJack.play();    break;
             case 5: crazy8.StartGame(); break;
-            case 6: Blackout.Blackout();         break;
+            case 6: Blackout.Blackout();break;
             default: break;
         }
     }
