@@ -16,8 +16,8 @@ public class Blackout
     
     Random rand = new Random(); 
     Scanner reader = new Scanner(System.in); 
-    public Blackout(){
-        
+    public static void Blackout(){
+    Scanner reader=new Scanner(System.in);    
     System.out.println("1.Play");
     System.out.println("2.Rules");
     if (reader.nextInt()== 2) Rules();

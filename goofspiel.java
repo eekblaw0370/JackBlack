@@ -7,19 +7,21 @@ import java.util.*;
 public class goofspiel{
     public static void main(String[] args){
         Scanner choicer=new Scanner(System.in);    //the choice is yours
-        Deck hhand  =new Deck(true);    //boolean doesn't actually do anything. 
-        Deck thedeck=new Deck(false);   //I made a new deck, yes it's true
-        Deck chand  =new Deck(true);    //I made a new deck, just for you
+        ArrayList<Deck> pile=new ArrayList<Deck>();
+        pile.add(new Deck(Suit.diamond));   pile.add(new Deck(Suit.heart));
+        pile.add(new Deck(Suit.club));      pile.add(new Deck(Suit.spade));
+        Deck hhand=new Deck(false), thedeck=new Deck(false), chand=new Deck(true);//boolean useless
         String um="";                   //umm...
         boolean whatdoesthisdo=false;
         System.out.println("Do you know how to play Goofspiel? (y/not y)");
         um=choicer.nextLine();
+        Card theprize;
         if(um.substring(0,1).toLowerCase().equals("y")){
             System.out.println("Let's just jump into it then.");
-        System.out.println();}
+            System.out.println();
+        }
         else{rules();System.out.println("Press enter to continue");choicer.nextLine();}
         System.out.println();
-        thedeck.shuffle();
         boolean yessir=false;                     //I actually forgot what this does
         int choice=0, cbid=0, hbid=0;             //The bids
         int temp=0;                               //It's okay, mom, it's temporary
@@ -33,62 +35,83 @@ public class goofspiel{
             System.out.println("Choose your suit. (d/h/c/s)");
             hsuit=choicer.nextLine();
             switch(hsuit){
-                case "d": hhand.addSuit(Suit.diamond);  whatdoesthisdo=true;    break;
-                case "h": hhand.addSuit(Suit.heart);    whatdoesthisdo=true;    break;
-                case "c": hhand.addSuit(Suit.club);     whatdoesthisdo=true;    break;
-                case "s": hhand.addSuit(Suit.spade);    whatdoesthisdo=true;    break;
+                case "d": hhand=pile.remove(0); whatdoesthisdo=true;    break;
+                case "h": hhand=pile.remove(1); whatdoesthisdo=true;    break;
+                case "c": hhand=pile.remove(2); whatdoesthisdo=true;    break;
+                case "s": hhand=pile.remove(3); whatdoesthisdo=true;    break;
                 default: System.out.println("Nein! Dost thou not know the meaning of words?"); break;
             }
         } 
-        csuit=suits.remove(randy.nextInt(2));
-        dsuit=suits.get(randy.nextInt(1));
-        bigwin.printvs(hsuit,csuit);
+        chand=pile.remove(randy.nextInt(2));
+        thedeck=pile.remove(randy.nextInt(1)); 
+        thedeck.shuffle();
+        Card cbidc, hbidc;
+        bigwin.printvs(hhand.getcard(0).getSuit().toString(),chand.getcard(0).getSuit().toString());
         for(int i=0;i<13;i++){
             System.out.println("Round "+(i+1));
-            prize=thedeck.remove(randy.nextInt(thedeck.size()));  //2 levels of random
-            System.out.println("Current prize: "+prize+" of "+dsuit);
+            theprize=thedeck.deal();  //2 levels of random
+            prize=theprize.getRank();
+            System.out.println("Current prize: "+theprize);
             System.out.print("Here are your bid options: ");
-            for(int n:hhand){System.out.print(n+" ");}
+            hhand.priinntt();
             System.out.println();
             System.out.println("Choose a number to bid.");
             while(true){
-            hbid=choicer.nextInt();
+                while(true){
+                    try{
+                        hbid=Integer.valueOf(choicer.nextLine());
+                        break;
+                    }   
+                    catch(Exception e){
+                        System.out.println("Sorry, we can't accept that. We're not advanced enough.");
+                    }
+                }    
             if(hhand.contains(hbid))break;
             else System.out.println("You fool! Choose again!");
            }
-           hhand.remove(hhand.indexOf(hbid));
+           hbidc=hhand.removecard(hhand.indexOf(hbid));
            temp=randy.nextInt(2)+prize+sparklebag-1;        //range of choices
-           if(chand.contains(temp)){cbid=chand.remove(chand.indexOf(temp));}
+           if(chand.contains(temp)){
+               cbidc=chand.removecard(chand.indexOf(temp));
+               cbid=cbidc.getRank();
+               System.out.println("Computer's bid: "+cbidc);}
            else if(temp<prize){  //wow this is harder than I thought it would be
                for(int z=chand.size()-1;z>=0;z--){     //umm these do something probably
                    if(chand.get(z)<temp){
-                       cbid=chand.remove(z); break;
+                       cbidc=chand.removecard(z);
+                       cbid=cbidc.getRank(); 
+                       System.out.println("Computer's bid: "+cbidc);break;
                     }
                    if(z==0){
-                       cbid=chand.remove(z); break;
+                       cbidc=chand.removecard(z);
+                       cbid=cbidc.getRank(); 
+                       System.out.println("Computer's bid: "+cbidc);break;
                     }
                 }
            }
            else{
                for(int z=0;z<chand.size();z++){
                    if(chand.get(z)>temp){
-                       cbid=chand.remove(z); break;
+                       cbidc=chand.removecard(z);
+                       cbid=cbidc.getRank(); 
+                       System.out.println("Computer's bid: "+cbidc);break;
                     }
                    if(z==chand.size()-1){
-                       cbid=chand.remove(z); break;
+                       cbidc=chand.removecard(z);
+                       cbid=cbidc.getRank(); 
+                       System.out.println("Computer's bid: "+cbidc);break;
                     }
                 }
             }
-           System.out.println("Computer's bid: "+cbid+" of "+csuit);
            if(hbid>cbid){
                hscore+=prize+sparklebag; 
-               System.out.println("You won the "+prize+" of "+dsuit+".");
+               System.out.println("You won the "+theprize+".");
                if(sparklebag!=0){System.out.println("Bonus: "+sparklebag);}
                sparklebag=0;
             }
            else if(cbid>hbid){
                cscore+=prize+sparklebag; 
-               System.out.println("Computer won the "+prize+" of "+dsuit+".");
+               System.out.println("Computer won the "+theprize+".");
                if(sparklebag!=0){System.out.println("Bonus: "+sparklebag);}
                sparklebag=0;
             }
