@@ -6,11 +6,15 @@
 import java.util.*;
 public class Gameroom{
     public static void main(String [] args)throws Exception{
-        System.out.println("Welcome to the gameroom! Select a game to begin.");
-        menu();
-        String[] yo=new String[] {"go"};
+        System.out.println("Welcome to the gameroom!");
         Scanner scannyboy=new Scanner(System.in);
-        int selection=scannyboy.nextInt();
+        String[] yo=new String[] {"go"};
+        int selection;
+        boolean yes=false;
+        while(!yes){
+            System.out.println("Select a game.");
+        menu();
+        selection=scannyboy.nextInt();
         switch(selection){
             case 1: war.main(yo);       break;
             case 2: goofspiel.main(yo); break;
@@ -18,8 +22,9 @@ public class Gameroom{
             case 4: slapJack.play();    break;
             case 5: crazy8.StartGame(); break;
             case 6: Blackout.Blackout();break;
-            default: break;
+            default: yes=true; break;
         }
+    }
     }
     public static void menu(){
         print("1 - Start off simple with war.");
