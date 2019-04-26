@@ -7,13 +7,11 @@ import java.util.*;
 public class goofspiel{
     public static void main(String[] args){
         Scanner choicer=new Scanner(System.in);    //the choice is yours
-        ArrayList<String> suits=new ArrayList<String>();
-        suits.add("diamonds");suits.add("hearts"); //what fancy suits you have!
-        suits.add("clubs"); suits.add("spades");   //The better to scam you with, my dear!
-        Deck hhand=new Deck(true);   //boolean doesn't actually do anything
-        Deck thedeck=new Deck(false);
-        Deck chand=new Deck(true);
-        String um="";
+        Deck hhand  =new Deck(true);    //boolean doesn't actually do anything. 
+        Deck thedeck=new Deck(false);   //I made a new deck, yes it's true
+        Deck chand  =new Deck(true);    //I made a new deck, just for you
+        String um="";                   //umm...
+        boolean whatdoesthisdo=false;
         System.out.println("Do you know how to play Goofspiel? (y/not y)");
         um=choicer.nextLine();
         if(um.substring(0,1).toLowerCase().equals("y")){
@@ -29,16 +27,16 @@ public class goofspiel{
         String hsuit="", csuit="", dsuit="";
         int sparklebag=0;                         //deploy the sparkebag
         int h=0,c=1, pval=0;
-        int prize;
+        int prize;      
         int hscore=0,cscore=0;
-        while(hsuit!="diamonds" && hsuit!="hearts" && hsuit!="clubs" && hsuit!="spades"){
+        while(!whatdoesthisdo){
             System.out.println("Choose your suit. (d/h/c/s)");
             hsuit=choicer.nextLine();
             switch(hsuit){
-                case "d": hsuit=suits.remove(0); break;
-                case "h": hsuit=suits.remove(1); break;
-                case "c": hsuit=suits.remove(2); break;
-                case "s": hsuit=suits.remove(3); break;
+                case "d": hhand.addSuit(Suit.diamond);  whatdoesthisdo=true;    break;
+                case "h": hhand.addSuit(Suit.heart);    whatdoesthisdo=true;    break;
+                case "c": hhand.addSuit(Suit.club);     whatdoesthisdo=true;    break;
+                case "s": hhand.addSuit(Suit.spade);    whatdoesthisdo=true;    break;
                 default: System.out.println("Nein! Dost thou not know the meaning of words?"); break;
             }
         } 
