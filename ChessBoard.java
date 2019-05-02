@@ -7,16 +7,16 @@ public class ChessBoard
     private static Card[][] board = new Card[8][8];
     public ChessBoard()
     {
-        this.board[0][0] = new Card(Suit.club, 5);
-        this.board[0][1] = new Card(Suit.club, 3);
-        this.board[0][2] = new Card(Suit.club, 1);
-        this.board[0][3] = new Card(Suit.club, 12);
-        this.board[0][4] = new Card(Suit.club, 13);
-        this.board[0][5] = new Card(Suit.club, 2);
-        this.board[0][6] = new Card(Suit.club, 4);
-        this.board[0][7] = new Card(Suit.club, 6);
+        this.board[0][0] = new Card(Suit.black, 8);
+        this.board[0][1] = new Card(Suit.black, 6);
+        this.board[0][2] = new Card(Suit.black, 4);
+        this.board[0][3] = new Card(Suit.black, 12);
+        this.board[0][4] = new Card(Suit.black, 13);
+        this.board[0][5] = new Card(Suit.black, 4);
+        this.board[0][6] = new Card(Suit.black, 6);
+        this.board[0][7] = new Card(Suit.black, 8);
         for (int i = 0; i <= 7; i++){
-            this.board[1][i] = new Card(Suit.spade, i + 1);
+            this.board[1][i] = new Card(Suit.black, 2);
         }
         for (int j = 2; j <= 5; j++){
             for (int i = 0; i <= 7; i++){
@@ -24,16 +24,16 @@ public class ChessBoard
             }
         }
         for (int i = 0; i <= 7; i++){
-            this.board[6][i] = new Card(Suit.diamond, i + 1);
+            this.board[6][i] = new Card(Suit.white, 2);
         }
-        this.board[7][0] = new Card(Suit.heart, 5);
-        this.board[7][1] = new Card(Suit.heart, 3);
-        this.board[7][2] = new Card(Suit.heart, 1);
-        this.board[7][3] = new Card(Suit.heart, 12);
-        this.board[7][4] = new Card(Suit.heart, 13);
-        this.board[7][5] = new Card(Suit.heart, 2);
-        this.board[7][6] = new Card(Suit.heart, 4);
-        this.board[7][7] = new Card(Suit.heart, 6);
+        this.board[7][0] = new Card(Suit.white, 8);
+        this.board[7][1] = new Card(Suit.white, 6);
+        this.board[7][2] = new Card(Suit.white, 4);
+        this.board[7][3] = new Card(Suit.white, 12);
+        this.board[7][4] = new Card(Suit.white, 13);
+        this.board[7][5] = new Card(Suit.white, 4);
+        this.board[7][6] = new Card(Suit.white, 6);
+        this.board[7][7] = new Card(Suit.white, 8);
     }
     
     public static Card[][] getBoard(ChessBoard chessboard)

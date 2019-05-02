@@ -19,7 +19,7 @@ public class GoFish
     static int score2;
     static int score3;
     static int score4;
-    
+    static int[] nums = new int[13];
     public static void main(String [] args)
     {
         boolean done = false;
@@ -38,7 +38,7 @@ public class GoFish
         
         System.out.println("Shuffling deck and dealing cards...");
         for (int i = 0; i < 10; i++){
-            patio.shuffle();
+            patio.bettershuffle();
         }
         if (numPlayers == 2){
             for (int i = 0; i < 7; i++){
@@ -59,11 +59,12 @@ public class GoFish
                 com3.add(patio.deal());
             }
         }
-        while (!patio.isEmpty()){
-            pile.add(patio.deal());
-        }
         
         turn = (int)(Math.random() * numPlayers) + 1;
+        
+        for (int i = 0; i < 13; i++){
+            nums[i] = 0;
+        }
     }
     
     public static void takeTurn(){
@@ -72,9 +73,62 @@ public class GoFish
         int demandNum;
         int demandRank;
         if (turn == 1){
-            System.out.println("Do you want to demand cards from Player 2, Player 3, or Player 4? (2-4)");
+            System.out.println("Here are your cards:");
+            for (int a = 0; a < human.size(); a++){
+                System.out.print(" ┌───┐");
+            }
+            System.out.println();
+            for (int b = 0; b < human.size(); b++){
+                System.out.print(" │" + BuildCard.displaySuit(human.get(b)) + "   " + BuildCard.displaySuit(human.get(b)) + "│");
+            }
+            System.out.println();
+            for (int c = 0; c < human.size(); c++){
+                System.out.print(" │  " + BuildCard.displayRank(human.get(c)) + "  │");
+            }
+            System.out.println();
+            for (int d = 0; d < human.size(); d++){
+                System.out.print(" │" + BuildCard.displaySuit(human.get(d)) + "   " + BuildCard.displaySuit(human.get(d)) + "│");
+            }
+            System.out.println();
+            for (int e = 0; e < human.size(); e++){
+                System.out.print(" └───┘");
+            }
+            System.out.println();
+            System.out.println("Who do you want to demand cards from?");
+            System.out.print("Player 2   ");
+            if (numPlayers > 2)
+                System.out.print("Player 3   ");
+            if (numPlayers > 3)
+                System.out.print("Player 4");
+            System.out.println();
             demandNum = reader.nextInt();
-            System.out.println("What rank would you like to demand? (1-13)");
+            System.out.println("What rank would you like to demand?");
+            if (turnToPlayer(turn).contains(1))
+                System.out.print("Ace (1)  ");
+            if (turnToPlayer(turn).contains(2))
+                System.out.print("2  ");
+            if (turnToPlayer(turn).contains(3))
+                System.out.print("3  ");
+            if (turnToPlayer(turn).contains(4))
+                System.out.print("4  ");
+            if (turnToPlayer(turn).contains(5))
+                System.out.print("5  ");
+            if (turnToPlayer(turn).contains(6))
+                System.out.print("6  ");
+            if (turnToPlayer(turn).contains(7))
+                System.out.print("7  ");
+            if (turnToPlayer(turn).contains(8))
+                System.out.print("8  ");
+            if (turnToPlayer(turn).contains(9))
+                System.out.print("9  ");
+            if (turnToPlayer(turn).contains(10))
+                System.out.print("10  ");
+            if (turnToPlayer(turn).contains(11))
+                System.out.print("Jack (11)  ");
+            if (turnToPlayer(turn).contains(12))
+                System.out.print("Queen (12)  ");
+            if (turnToPlayer(turn).contains(13))
+                System.out.print("King (13)  ");
             demandRank = reader.nextInt();
         }else{
             demandNum = turn;
@@ -87,10 +141,11 @@ public class GoFish
         boolean response = check(demandNum, demandRank, turnToPlayer(turn));
         if (response == false){
             System.out.println("- No, I do not. Go Fish!");
-            turnToPlayer(turn).add(patio.deal());
+            if (patio.size() > 0)
+                turnToPlayer(turn).add(patio.deal());
         }else
             System.out.println("- Yes, I do. Here you go!");
-        int[] nums = new int[13];
+        System.out.println(turnToPlayer(turn));
         for (int i = 0; i < turnToPlayer(turn).size(); i++){
             nums[turnToPlayer(turn).get(i).getRank() - 1]++;
         }
@@ -111,7 +166,7 @@ public class GoFish
                 }
             }
         }
-            if (turn < numPlayers)
+        if (turn < numPlayers)
             turn++;
         else
             turn = 1;
@@ -121,7 +176,7 @@ public class GoFish
         int count = 0;
         for (int i = 0; i < turnToPlayer(num).size(); i++){
             if (turnToPlayer(num).get(i).getRank() == rank){
-                player.add(turnToPlayer(num).remove(i));
+                player.add((turnToPlayer(num).remove(i)));
                 count++;
             }
         }
@@ -145,14 +200,20 @@ public class GoFish
     }
     
     public static void congratulate(){
+        int winner = 1;
         int score = score1;
-        if (score < score2)
+        if (score < score2){
             score = score2;
-        if (score < score3)
+            winner = 2;
+        }
+        if (score < score3){
             score = score3;
-        if (score < score4)
+            winner = 3;
+        }
+        if (score < score4){
             score = score4;
-        int winner;
+            winner = 4;
+        }
         System.out.println("Congratulations! Player " + winner + " wins with " + score + " sets!");
     }
 }
