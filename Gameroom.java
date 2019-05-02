@@ -20,7 +20,7 @@ public class Gameroom{
             case 2: goofspiel.main(yo); break;
             case 3: PlayChess.main(yo); break;
             case 4: slapJack.play();    break;
-            case 5: crazy8.StartGame(); break;
+            case 5: Eights.main(yo); break;
             case 6: Blackout.Blackout();break;
             default: yes=true; break;
         }
