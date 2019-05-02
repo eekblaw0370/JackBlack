@@ -195,14 +195,14 @@ public class Eights {
         }
         EightsPlayer player = getPlayer(0);
 
-        // keep playing until there's a winner
+        
         while (!isDone()) {
             displayState();
             waitForUser();
             takeTurn(player);
             player = nextPlayer(player);
         }
-        // display the final score
+        
         for (int x = 0; x < players.size(); x++) {
             getPlayer(x).displayScore();
         }
