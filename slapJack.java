@@ -9,10 +9,31 @@ public class slapJack{
     TimerTask task=new TimerTask(){
         public void run(){
             if(str.equals("")){
-                System.exit(0);
+                
             }   
+            
         }   
     }; //???
+    public void getInput(int delay)throws Exception{    //Literally what is this
+    Timer timer=new Timer();
+    timer.schedule(task,delay);
+    System.out.println("slap?");
+    BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+    str=in.readLine();
+    timer.cancel();
+}
+public static boolean timeinput(int delay){
+    try{(new slapJack()).getInput(delay);
+        return true;
+    }
+    catch(Exception e){
+        return false;
+    }
+}
+public boolean timeslap(int delay){
+    Scanner slapreceiver=new Scanner(System.in);
+    return true;
+}
     public static void play()throws Exception{
         int stomp=1000;
         System.out.println();
@@ -31,6 +52,7 @@ public class slapJack{
         print("2 - rules");
         if(seer.nextInt()==1){}else{rules(); print("enter to start.");seer.nextLine();}
         print("Coin flip imminent. Choose wisely! (h/t)");
+        seer.nextLine();
         if(seer.nextLine().equals("h")){print("Nope, it's tails.");}
         else{print("Nope it was heads.");}
         turn="c";
@@ -52,12 +74,18 @@ public class slapJack{
                 
             }
             if(timeinput(delay)){
+                print("You SLAPPED!");
                 if(slapisvalid(stack, c)){
-                    
+                    print("Hooray! You get the stack!");
+                    for(Card r:stack)human.add(0,r);
+                }
+                else{
+                    print("Boo! Give up a card to the computer!");
+                    computer.add(0,human.remove(human.size()-1));
                 }
             }
             else{
-                
+                print("you didn't slap.");
             }
             if(turn.equals("c")){turn="h";}else{turn="c";}
             c++; if(c>13)c=1;
@@ -65,22 +93,7 @@ public class slapJack{
         if(human.size()<=0)print("Computer won.");
         else print("You won.");
     }
-public void getInput(int delay)throws Exception{    //Literally what is this
-    Timer timer=new Timer();
-    timer.schedule(task,delay);
-    System.out.println("slap?");
-    BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
-    str=in.readLine();
-    timer.cancel();
-}
-public static boolean timeinput(int delay){
-    try{(new slapJack()).getInput(delay);
-        return true;
-    }
-    catch(Exception e){
-        return false;
-    }
-}
+
 public static int openmenu(){
     print("Choose:");
     print("1 - Play game");
@@ -90,10 +103,10 @@ public static int openmenu(){
 public static boolean slapisvalid(ArrayList<Card> stack, int count){
     int top=stack.size()-1;
     if(stack.get(top).getRank()==11){return true;}
-    if(stack.get(top).getRank()==stack.get(top-1).getRank()){return true;}
+    if(stack.size()>1){
+        if(stack.get(top).getRank()==stack.get(top-1).getRank()){return true;}
+    }
     if(stack.get(top).getRank()==count){return true;}
-    if(stack.size()<3){}
-    if(stack.size()<2){}
     return false;
 }
 public static int difmenu(){
