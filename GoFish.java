@@ -145,6 +145,14 @@ public class GoFish
     }
     
     public static void congratulate(){
-        
+        int score = score1;
+        if (score < score2)
+            score = score2;
+        if (score < score3)
+            score = score3;
+        if (score < score4)
+            score = score4;
+        int winner;
+        System.out.println("Congratulations! Player " + winner + " wins with " + score + " sets!");
     }
 }
