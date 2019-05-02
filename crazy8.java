@@ -23,7 +23,9 @@ import java.util.Random;
 import java.util.*;
 
 public class crazy8{ 
+  
     private int rank;
+    private int suit;
 
     public static void StartGame(){
         rules();
@@ -40,7 +42,7 @@ public class crazy8{
             Decks.remove(0);
             
         }
-        System.out.println(Decks);
+        //System.out.println(Decks);
     }
 
     public  ArrayList getDeck(){
@@ -53,7 +55,7 @@ public class crazy8{
     }
     public static void rules(){
         System.out.println("Major Rules:");
-        System.out.println("1. You will start with 5 cards in your hand play them all and you win!! Have to match suit or number in order to plahy your card.");
+        System.out.println("1. You will start with 5 cards in your hand play them all and you win!! Have to match suit or number in order to play your card.");
         System.out.println("2. Eights are wild and can be played at any time. When a player plays an eight, they then get to pick the current suit,");
         System.out.println("whether that be hearts, clubs, spades, or diamonds. If the player can't match the top cards, then they must draw cards ");
         System.out.println("from the deck until they get a match.");
@@ -68,7 +70,7 @@ public class crazy8{
         while(num<0 || num>0){
             System.out.println("-------------------------------------");
             System.out.println("");
-            System.out.println("Here is your oppnent another classmate.");
+            System.out.println("Here is your oppenent another classmate.");
             System.out.println("Either one could lose. Type 0 to challenge the other master.");
             Scanner get=new Scanner(System.in);
             num=get.nextInt(); if(num<0 || num>0){System.out.println("No! Not an option!");}
@@ -120,5 +122,4 @@ public class crazy8{
         else
             return "" + rank;
     }
-
 }
