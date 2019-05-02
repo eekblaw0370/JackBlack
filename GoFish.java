@@ -25,7 +25,17 @@ public class GoFish
         boolean done = false;
         initializeGame();
         while (done == false){
-            takeTurn();
+            if (turnToPlayer(turn).size() > 0)
+                takeTurn();
+            else{
+                System.out.println("Looks like Player " + turn + " is out of cards!");
+                if (turn < numPlayers)
+                    turn++;
+                else
+                    turn = 1;
+            }
+            if (human.size() == 0 && com1.size() == 0 && com2.size() == 0 && com3.size() == 0)
+                done = true;
         }
         congratulate();
     }
@@ -67,6 +77,9 @@ public class GoFish
     
     public static void takeTurn(){
         System.out.println("Player " + turn + "'s turn!");
+        if (turnToPlayer(turn).size() == 0){
+            
+        }
         Scanner reader = new Scanner(System.in);
         int demandNum;
         int demandRank;
@@ -169,13 +182,14 @@ public class GoFish
             nums[i] = 0;
         }
         for (int i = 0; i < turnToPlayer(turn).size(); i++){
-            nums[turnToPlayer(turn).get(i).getRank() - 1]++;
+            nums[(turnToPlayer(turn).get(i)).getRank() - 1]++;
         }
         for (int i = 0; i < 13; i++){
             if (nums[i] == 4){
                 for (int j = 0; j < turnToPlayer(turn).size(); j++){
-                    if (turnToPlayer(turn).get(j).getRank() == i){
+                    if ((turnToPlayer(turn).get(j)).getRank() == i + 1){
                         pile.add(turnToPlayer(turn).remove(j));
+                        j--;
                         if (turn == 1)
                             score1++;
                         if (turn == 2)
@@ -187,6 +201,9 @@ public class GoFish
                     }
                 }
             }
+        }
+        for (int i = 0; i < 13; i++){
+            System.out.print(nums[i]);
         }
         if (turn < numPlayers)
             turn++;
