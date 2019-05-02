@@ -3,36 +3,16 @@
  * Created by Aidan Li
  */
 import java.util.*;
-import java.io.*;
 public class slapJack{
-    private String str="";     //Like what is this I don't even know
-    TimerTask task=new TimerTask(){
-        public void run(){
-            if(str.equals("")){
-                
-            }   
-            
-        }   
-    }; //???
-    public void getInput(int delay)throws Exception{    //Literally what is this
-    Timer timer=new Timer();
-    timer.schedule(task,delay);
-    System.out.println("slap?");
-    BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
-    str=in.readLine();
-    timer.cancel();
-}
-public static boolean timeinput(int delay){
-    try{(new slapJack()).getInput(delay);
-        return true;
-    }
-    catch(Exception e){
-        return false;
-    }
-}
-public boolean timeslap(int delay){
+    public static boolean timeslap(double delay){
+    long startTime=System.currentTimeMillis();
     Scanner slapreceiver=new Scanner(System.in);
-    return true;
+    String slap=slapreceiver.nextLine();
+    long endTime=System.currentTimeMillis();
+    double elapsed=endTime-startTime;
+    if(!slap.equals(""))return false;
+    if(elapsed/1000<delay)return true;
+    else return false;
 }
     public static void play()throws Exception{
         int stomp=1000;
@@ -50,15 +30,15 @@ public boolean timeslap(int delay){
         } 
         print("1 - play!");
         print("2 - rules");
-        if(seer.nextInt()==1){}else{rules(); print("enter to start.");seer.nextLine();}
+        if(Integer.valueOf(seer.nextLine())==1){}else{rules(); print("enter to start.");seer.nextLine();}
         print("Coin flip imminent. Choose wisely! (h/t)");
-        seer.nextLine();
         if(seer.nextLine().equals("h")){print("Nope, it's tails.");}
         else{print("Nope it was heads.");}
         turn="c";
         c=1;
-        int delay=difmenu();
+        double delay=difmenu();
         while(human.size()!=0 && computer.size()!=0){
+            print("Counter: "+c);
             if(turn.equals("c")){
                 Thread.sleep(stomp);
                 tempcard=computer.remove(computer.size()-1);
@@ -73,19 +53,26 @@ public boolean timeslap(int delay){
                 System.out.println("You played "+tempcard);
                 
             }
-            if(timeinput(delay)){
-                print("You SLAPPED!");
-                if(slapisvalid(stack, c)){
-                    print("Hooray! You get the stack!");
-                    for(Card r:stack)human.add(0,r);
+            if(slapisvalid(stack,c)){
+                if(timeslap(delay)){
+                    print("You SLAPPED before the computer!");
+                    for(Card l:stack)human.add(0,l);
+                    stack.clear();
                 }
                 else{
-                    print("Boo! Give up a card to the computer!");
-                    computer.add(0,human.remove(human.size()-1));
+                    print("Computer SLAPPED!");
+                    for(Card z:stack)computer.add(0,z);
+                    stack.clear();
                 }
             }
             else{
-                print("you didn't slap.");
+                if(timeslap(delay)){
+                    print("You SLAPPED! Incorrectly, it seems. Give up a card to the computer.");
+                    computer.add(0,human.remove(human.size()-1));
+                }
+                else{
+                    print("No one slapped.");
+                }
             }
             if(turn.equals("c")){turn="h";}else{turn="c";}
             c++; if(c>13)c=1;
@@ -109,10 +96,11 @@ public static boolean slapisvalid(ArrayList<Card> stack, int count){
     if(stack.get(top).getRank()==count){return true;}
     return false;
 }
-public static int difmenu(){
-    int num=-1, speed=0;
+public static double difmenu(){
+    double num=-1, speed=0;
     while(num<0 || num>4){
     print("Choose a computer difficulty.");
+    print("Note: Most of these choices are trash.");
     print("0 - baby. You probably don't even have to try.");
     print("1 - 6 year old. He just learned the game, so go easy on him.");
     print("2 - 16 year old. He's played the game a few times.");
@@ -121,13 +109,13 @@ public static int difmenu(){
     Scanner get=new Scanner(System.in);
     num=get.nextInt(); if(num<0 || num>4){print("No! Not an option!");}
 }   
-switch(num){
-    case 0: print("Do you enjoy beating babies at card games?"); speed=-1; break;
-    case 1: print("You might even have to try."); speed=1;    break;
-    case 2: print("Your rival. This is gonna be a close one."); speed=3;    break;
-    case 3: print("Can you beat my dad?"); speed=5;    break;
-    case 4: System.out.println("If you win, you will be the ultimate "+slopjock()+" champion!"); speed=1000; break;
-    default: speed=1;
+switch((int)num){
+    case 0: print("Do you enjoy beating babies at card games?"); speed=1000; break;
+    case 1: print("You might even have to try."); speed=7;    break;
+    case 2: print("Your rival. This is gonna be a close one."); speed=1;    break;
+    case 3: print("Can you beat my dad?"); speed=.5;    break;
+    case 4: System.out.println("If you win, you will be the ultimate "+slopjock()+" champion!"); speed=0; break;
+    default: print("Defaulted to 16-year old");speed=1;
 }
 return speed;
 }
@@ -142,6 +130,7 @@ public static void rules(){
     print("Single Jack. It's called "+slopjock()+", after all.");
     print("Double number. If 2 of the same number in a row are put down, slap!");
     print("Count. Every turn the number will go up. If it matches what's put down, slap!");
+    print("If you enter anything other than nothing, it will count as a no-slap.");
     print("Press enter to play the game.");
 }
 public static String vowel(){
