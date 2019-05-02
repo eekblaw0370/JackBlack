@@ -111,6 +111,11 @@ public class Deck{
        return false;
     }
     
+    public static boolean contains(int rank, ArrayList<Card> list){
+        for(Card card:list){if(card.getRank()==rank)return true;}
+       return false;
+    }
+    
    public int get(int z){return cards.get(z).getRank();} 
    public Card getcard(int z){return cards.get(z);}
     

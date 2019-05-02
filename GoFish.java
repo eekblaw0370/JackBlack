@@ -19,7 +19,7 @@ public class GoFish
     static int score2;
     static int score3;
     static int score4;
-    static int[] nums = new int[13];
+    
     public static void main(String [] args)
     {
         boolean done = false;
@@ -62,9 +62,7 @@ public class GoFish
         
         turn = (int)(Math.random() * numPlayers) + 1;
         
-        for (int i = 0; i < 13; i++){
-            nums[i] = 0;
-        }
+        
     }
     
     public static void takeTurn(){
@@ -102,42 +100,62 @@ public class GoFish
                 System.out.print("Player 4");
             System.out.println();
             demandNum = reader.nextInt();
+            while (demandNum > numPlayers || demandNum < 2){
+                System.out.println("Invalid choice. Please choose again.");
+                demandNum = reader.nextInt();
+            }
             System.out.println("What rank would you like to demand?");
-            if (turnToPlayer(turn).contains(1))
+            if (Deck.contains(1, turnToPlayer(turn)))
                 System.out.print("Ace (1)  ");
-            if (turnToPlayer(turn).contains(2))
+            if (Deck.contains(2, turnToPlayer(turn)))
                 System.out.print("2  ");
-            if (turnToPlayer(turn).contains(3))
+            if (Deck.contains(3, turnToPlayer(turn)))
                 System.out.print("3  ");
-            if (turnToPlayer(turn).contains(4))
+            if (Deck.contains(4, turnToPlayer(turn)))
                 System.out.print("4  ");
-            if (turnToPlayer(turn).contains(5))
+            if (Deck.contains(5, turnToPlayer(turn)))
                 System.out.print("5  ");
-            if (turnToPlayer(turn).contains(6))
+            if (Deck.contains(6, turnToPlayer(turn)))
                 System.out.print("6  ");
-            if (turnToPlayer(turn).contains(7))
+            if (Deck.contains(7, turnToPlayer(turn)))
                 System.out.print("7  ");
-            if (turnToPlayer(turn).contains(8))
+            if (Deck.contains(8, turnToPlayer(turn)))
                 System.out.print("8  ");
-            if (turnToPlayer(turn).contains(9))
+            if (Deck.contains(9, turnToPlayer(turn)))
                 System.out.print("9  ");
-            if (turnToPlayer(turn).contains(10))
+            if (Deck.contains(10, turnToPlayer(turn)))
                 System.out.print("10  ");
-            if (turnToPlayer(turn).contains(11))
+            if (Deck.contains(11, turnToPlayer(turn)))
                 System.out.print("Jack (11)  ");
-            if (turnToPlayer(turn).contains(12))
+            if (Deck.contains(12, turnToPlayer(turn)))
                 System.out.print("Queen (12)  ");
-            if (turnToPlayer(turn).contains(13))
+            if (Deck.contains(13, turnToPlayer(turn)))
                 System.out.print("King (13)  ");
             demandRank = reader.nextInt();
+            while (!Deck.contains(demandRank, turnToPlayer(turn))){
+                System.out.println("Invalid choice. Please choose again.");
+                demandRank = reader.nextInt();
+            }
         }else{
             demandNum = turn;
             while (demandNum == turn){
                 demandNum = (int)(Math.random() * numPlayers) + 1;
             }
             demandRank = (int)(Math.random() * 13) + 1;
+            while (!Deck.contains(demandRank, turnToPlayer(turn))){
+                demandRank = (int)(Math.random() * 13) + 1;
+            }
         }
-        System.out.println("- Player " + demandNum + ", do you have any " + demandRank + "s?");
+        String rankRank = Integer.toString(demandRank);
+        if (rankRank == "1")
+            rankRank = "Ace";
+        if (rankRank == "11")
+            rankRank = "Jack";
+        if (rankRank == "12")
+            rankRank = "Queen";
+        if (rankRank == "13")
+            rankRank = "King";
+        System.out.println("- Player " + demandNum + ", do you have any " + rankRank + "s?");
         boolean response = check(demandNum, demandRank, turnToPlayer(turn));
         if (response == false){
             System.out.println("- No, I do not. Go Fish!");
@@ -146,6 +164,10 @@ public class GoFish
         }else
             System.out.println("- Yes, I do. Here you go!");
         System.out.println(turnToPlayer(turn));
+        int[] nums = new int[13];
+        for (int i = 0; i < 13; i++){
+            nums[i] = 0;
+        }
         for (int i = 0; i < turnToPlayer(turn).size(); i++){
             nums[turnToPlayer(turn).get(i).getRank() - 1]++;
         }
@@ -178,6 +200,7 @@ public class GoFish
             if (turnToPlayer(num).get(i).getRank() == rank){
                 player.add((turnToPlayer(num).remove(i)));
                 count++;
+                i--;
             }
         }
         
