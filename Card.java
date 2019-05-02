@@ -5,7 +5,10 @@ public class Card implements Comparable{
    private Suit suit;
    private int rank;
    private boolean faceUp;
-
+   
+   public Card(){
+       
+    }
    public Card(Suit suit, int rank){
       this.suit = suit;
       this.rank = rank;
