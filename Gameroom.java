@@ -21,7 +21,8 @@ public class Gameroom{
                 case 3: PlayChess.main(yo); break;
                 case 4: slapJack.play();    break;
                 case 5: Eights.main(yo); break;
-                case 6: Blackout.Blackout();break;
+                case 6: Blackout.Blackout(); break;
+                case 7: GoFish.main(yo); break;
                 default: yes=true; break;
             }
         }
@@ -35,6 +36,7 @@ public class Gameroom{
             slapJack.slopjock()+"!");
         print("5 - Ramp it up with cRaZy eIgHtS!");
         print("6 - Relive the nostalgia of WWII with Blackout.");
+        print("7 - Catch some fish in GO FISH!!.");
         print("Other numbers - Bah! I hate games!");
     }
 
