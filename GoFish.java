@@ -19,6 +19,7 @@ public class GoFish
     static int score2;
     static int score3;
     static int score4;
+    static int numChanged;
     
     public static void main(String [] args)
     {
@@ -29,6 +30,7 @@ public class GoFish
                 takeTurn();
             else{
                 System.out.println("Looks like Player " + turn + " is out of cards!");
+                System.out.println();
                 if (turn < numPlayers)
                     turn++;
                 else
@@ -77,9 +79,6 @@ public class GoFish
     
     public static void takeTurn(){
         System.out.println("Player " + turn + "'s turn!");
-        if (turnToPlayer(turn).size() == 0){
-            
-        }
         Scanner reader = new Scanner(System.in);
         int demandNum;
         int demandRank;
@@ -160,13 +159,13 @@ public class GoFish
             }
         }
         String rankRank = Integer.toString(demandRank);
-        if (rankRank == "1")
+        if (demandRank == 1)
             rankRank = "Ace";
-        if (rankRank == "11")
+        if (demandRank == 11)
             rankRank = "Jack";
-        if (rankRank == "12")
+        if (demandRank == 12)
             rankRank = "Queen";
-        if (rankRank == "13")
+        if (demandRank == 13)
             rankRank = "King";
         System.out.println("- Player " + demandNum + ", do you have any " + rankRank + "s?");
         boolean response = check(demandNum, demandRank, turnToPlayer(turn));
@@ -174,9 +173,15 @@ public class GoFish
             System.out.println("- No, I do not. Go Fish!");
             if (patio.size() > 0)
                 turnToPlayer(turn).add(patio.deal());
-        }else
+        }else{
             System.out.println("- Yes, I do. Here you go!");
-        System.out.println(turnToPlayer(turn));
+            System.out.print("Player " + turn + " gained " + numChanged + " " + rankRank);
+            if (numChanged > 1)
+                System.out.print("s!");
+            else
+                System.out.print("!");
+            System.out.println();
+        }
         int[] nums = new int[13];
         for (int i = 0; i < 13; i++){
             nums[i] = 0;
@@ -200,11 +205,20 @@ public class GoFish
                             score4++;
                     }
                 }
+                rankRank = Integer.toString(i + 1);
+                if (i == 0)
+                    rankRank = "Ace";
+                if (i == 10)
+                    rankRank = "Jack";
+                if (i == 11)
+                    rankRank = "Queen";
+                if (i == 12)
+                    rankRank = "King";
+                System.out.println("Player " + turn + " completed a set of " + rankRank + "s!");
             }
         }
-        for (int i = 0; i < 13; i++){
-            System.out.print(nums[i]);
-        }
+        System.out.println();
+        System.out.println();
         if (turn < numPlayers)
             turn++;
         else
@@ -212,16 +226,18 @@ public class GoFish
     }
     
     public static boolean check(int num, int rank, ArrayList<Card> player){
-        int count = 0;
+        numChanged = 0;
+        if (turnToPlayer(num).size() == 0)
+            return false;
         for (int i = 0; i < turnToPlayer(num).size(); i++){
             if (turnToPlayer(num).get(i).getRank() == rank){
                 player.add((turnToPlayer(num).remove(i)));
-                count++;
+                numChanged++;
                 i--;
             }
         }
         
-        if (count == 0)
+        if (numChanged == 0)
             return false;
         else
             return true;
@@ -254,6 +270,14 @@ public class GoFish
             score = score4;
             winner = 4;
         }
-        System.out.println("Congratulations! Player " + winner + " wins with " + score + " sets!");
+        System.out.println();
+        System.out.println("Congratulations! Player " + winner + " wins with " + (score / 4) + " sets!");
+        System.out.println("Final Score:");
+        System.out.println("Player 1: " + (score1 / 4) + " sets");
+        System.out.println("Player 2: " + (score2 / 4) + " sets");
+        if (numPlayers > 2)
+            System.out.println("Player 3: " + (score3 / 4) + " sets");
+        if (numPlayers > 3)
+        System.out.println("Player 4: " + (score4 / 4) + " sets");
     }
 }
